@@ -34,11 +34,12 @@ public class BonusServiceTest {
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     void shouldCalculateForUnRegisteredAndUnderLimit() {
         BonusService service = new BonusService();
 
-        // подготавливаем данные для незарегистрированного пользователя:
+        // подготавливаем данные для незарегистрированного пользователя по проценту:
         long amount = 1000;
         boolean registered = false;
         long expected = 10;
@@ -49,6 +50,7 @@ public class BonusServiceTest {
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     void shouldCalculateForUnregisteredAndOverLimit() {
         BonusService service = new BonusService();
@@ -64,11 +66,12 @@ public class BonusServiceTest {
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     void shouldCalculateForUnregisteredAndBeforeLimit() {
         BonusService service = new BonusService();
 
-        // подготавливаем данные для незарегистрированного пользователя рядом с лимитом:
+        // подготавливаем данные для незарегистрированного пользователя рядом с лимитом меньше:
         long amount = 49_999;
         boolean registered = false;
         long expected = 499;
@@ -79,11 +82,12 @@ public class BonusServiceTest {
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     void shouldCalculateForUnregisteredAndNearLimit() {
         BonusService service = new BonusService();
 
-        // подготавливаем данные для незарегистрированного пользователя рядом с лимитом:
+        // подготавливаем данные для незарегистрированного пользователя рядом с лимитом большепшпше:
         long amount = 50_101;
         boolean registered = false;
         long expected = 500;
